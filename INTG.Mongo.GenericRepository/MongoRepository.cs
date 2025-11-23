@@ -43,42 +43,7 @@ using MongoDB.Driver;
 
 namespace INTG.Mongo.GenericRepository
 {
-    /// <summary>
-    /// Optional interface: implement on your documents if you want a common Id property.
-    /// Use BsonId/BsonRepresentation attributes on concrete types if you want string <-> ObjectId mapping.
-    /// </summary>
-    public interface IEntity
-    {
-        // This property is optional for the repository to work; some helper methods assume this.
-        object? Id { get; set; }
-    }
-
-    /// <summary>
-    /// Uniform result wrapper for repository operations.
-    /// Contains success flag, data (when applicable), and error information.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public sealed class OperationResult<T>
-    {
-        public bool Success { get; private set; }
-        public T? Data { get; private set; }
-        public string? ErrorMessage { get; private set; }
-        public Exception? Exception { get; private set; }
-
-        private OperationResult() { }
-
-        public static OperationResult<T> Ok(T? data = default) => new OperationResult<T> { Success = true, Data = data };
-        public static OperationResult<T> Fail(string message, Exception? ex = null) => new OperationResult<T> { Success = false, ErrorMessage = message, Exception = ex };
-    }
-
-    /// <summary>
-    /// Custom exception type thrown for configuration or irrecoverable repository errors.
-    /// </summary>
-    public class RepositoryException : Exception
-    {
-        public RepositoryException(string message) : base(message) { }
-        public RepositoryException(string message, Exception inner) : base(message, inner) { }
-    }
+   
 
     /// <summary>
     /// Generic MongoDB repository designed to be reusable across multiple apps and document types.
