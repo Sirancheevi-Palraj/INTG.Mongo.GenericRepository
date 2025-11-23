@@ -41,7 +41,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
-namespace Banking.MongoLib
+namespace INTG.Mongo.GenericRepository
 {
     /// <summary>
     /// Optional interface: implement on your documents if you want a common Id property.
